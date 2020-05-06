@@ -2,8 +2,7 @@
 main:
   - title: "Categories"
     url: /categories/
-  - title: "예수는 역사다"
-    url: /categories/예수는 역사다/
+
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
