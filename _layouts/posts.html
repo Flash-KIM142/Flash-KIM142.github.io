@@ -1,29 +1,48 @@
----
-layout: archive
----
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    {%- include head.html -%}
+  </head>
+  <body>
+    <header class="texture-{{ site.texture.style }}">
+      <div class="container">
+        {%- include nav.html -%}
+      </div>
+      {%- include post_header.html -%}
+    </header>
+    <main>
+      <div class="container">
+        <div class="post-container">
+          {{ content }}
+        </div>
 
-{{ content }}
+        <!-- Configure Disqus -->
+        {%- if site.texture.disqus_shortname -%}
 
-<ul class="taxonomy__index">
-  {% assign postsInYear = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
-  {% for year in postsInYear %}
-    <li>
-      <a href="#{{ year.name }}">
-        <strong>{{ year.name }}</strong> <span class="taxonomy__count">{{ year.items | size }}</span>
-      </a>
-    </li>
-  {% endfor %}
-</ul>
-
-{% assign postsByYear = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
-{% for year in postsByYear %}
-  <section id="{{ year.name }}" class="taxonomy__section">
-    <h2 class="archive__subtitle">{{ year.name }}</h2>
-    <div class="entries-{{ page.entries_layout | default: 'list' }}">
-      {% for post in year.items %}
-        {% include archive-single.html type=page.entries_layout %}
-      {% endfor %}
-    </div>
-    <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-  </section>
-{% endfor %}
+        <div id="disqus_thread" style="margin-top: 25px;"></div>
+        <script>
+          var disqus_config = function () {
+            this.page.url = "{{ page.url | absolute_url }}";
+            this.page.identifier = "{{ page.url | absolute_url }}";
+          };
+          (function () {
+            var d = document,
+              s = d.createElement("script");
+            s.src =
+              "https://{{ site.texture.disqus_shortname }}.disqus.com/embed.js";
+            s.setAttribute("data-timestamp", +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript
+          >Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+            >comments powered by Disqus.</a
+          ></noscript
+        >
+        {%- endif -%}
+      </div>
+    </main>
+    {%- include footer.html -%}
+  </body>
+</html>

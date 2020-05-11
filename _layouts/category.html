@@ -1,9 +1,32 @@
 ---
-layout: archive
+layout: page
 ---
 
-{{ content }}
+<div class="categories">
+  <div
+    class="categories"
+    onclick="location.href='https://flash-kim142.github.io/Religion/'"
+  >
+    <div class="category-text-wrap">
+      <span class="category-text">Developing</span>
+    </div>
+  </div>
 
-<div class="entries-{{ page.entries_layout }}">
-  {% include posts-category.html taxonomy=page.taxonomy type=page.entries_layout %}
+
+  <!-- {%- for post in site.posts -%}
+	<li>
+		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+		<div class="post-meta">
+			<a class="post-link" href="{{ post.url | relative_url }}">
+				<h2 class="post-title">{{ post.title | escape }}</h2>
+			</a>
+			<div class="post-date"><i class="icon-calendar"></i>{{ post.date | date: date_format }}</div>
+		</div>
+		<div class="post">
+			{%- if site.show_excerpts -%}
+			{{ post.excerpt }}
+			{%- endif -%}
+		</div>
+	</li>
+	{%- endfor -%} -->
 </div>
